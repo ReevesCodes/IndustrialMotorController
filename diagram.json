@@ -1,0 +1,168 @@
+
+{
+  "version": 1,
+  "author": "Industrial Motor Controller",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 30,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-a4988",
+      "id": "driver",
+      "top": 40,
+      "left": 260,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "motor",
+      "top": -160,
+      "left": 270,
+      "attrs": {
+        "size": "17",
+        "display": "angle",
+        "arrow": "orange"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "startBtn",
+      "top": 310,
+      "left": 15,
+      "attrs": {
+        "color": "green",
+        "label": "START",
+        "key": "S",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "stopBtn",
+      "top": 310,
+      "left": 125,
+      "attrs": {
+        "color": "red",
+        "label": "STOP",
+        "key": "X",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "direction",
+      "top": 320,
+      "left": 260,
+      "attrs": {
+        "bounce": "0"
+      }
+    },
+
+{
+  "type": "wokwi-potentiometer",
+  "id": "speedControl",
+  "top": 310,
+  "left": 390,
+  "attrs": {
+    "value": "512"
+  }
+},
+
+
+{
+  "type": "wokwi-pushbutton",
+  "id": "limitSwitch",
+  "top": 420,
+  "left": 125,
+  "attrs": {
+    "color": "yellow",
+    "label": "LIMIT",
+    "key": "L",
+    "bounce": "0"
+  }
+},
+
+
+
+{
+  "type": "wokwi-pushbutton",
+  "id": "faultBtn",
+  "top": 420,
+  "left": 260,
+  "attrs": {
+    "color": "red",
+    "label": "FAULT",
+    "key": "F",
+    "bounce": "0"
+  }
+},
+{
+  "type": "wokwi-pushbutton",
+  "id": "resetBtn",
+  "top": 420,
+  "left": 390,
+  "attrs": {
+    "color": "blue",
+    "label": "RESET",
+    "key": "R",
+    "bounce": "0"
+  }
+}
+
+
+
+
+
+  ],
+  "connections": [
+    ["esp:26", "driver:STEP", "green", []],
+    ["esp:27", "driver:DIR", "blue", []],
+    ["esp:3V3", "driver:VDD", "red", []],
+    ["esp:GND.1", "driver:GND", "black", []],
+    ["esp:3V3", "driver:RESET", "orange", []],
+    ["esp:3V3", "driver:SLEEP", "orange", []],
+
+    ["driver:2B", "motor:A-", "green", []],
+    ["driver:2A", "motor:A+", "green", []],
+    ["driver:1A", "motor:B+", "blue", []],
+    ["driver:1B", "motor:B-", "blue", []],
+
+    ["esp:18", "startBtn:1.l", "green", []],
+    ["startBtn:2.l", "esp:GND.1", "black", []],
+
+    ["esp:19", "stopBtn:1.l", "red", []],
+    ["stopBtn:2.l", "esp:GND.1", "black", []],
+
+    ["direction:1", "esp:GND.1", "black", []],
+    ["direction:2", "esp:21", "yellow", []],
+    ["direction:3", "esp:3V3", "red", []],
+
+    ["esp:TX", "$serialMonitor:RX", "", []],
+    ["esp:RX", "$serialMonitor:TX", "", []],
+
+
+    ["speedControl:VCC", "esp:3V3", "red", []],
+    ["speedControl:GND", "esp:GND.1", "black", []],
+    ["speedControl:SIG", "esp:34", "green", []],
+    ["esp:23", "limitSwitch:1.l", "yellow", []],
+    [  "limitSwitch:2.l", "esp:GND.1", "black", []],
+
+
+
+["esp:22", "faultBtn:1.l", "red", []],
+["faultBtn:2.l", "esp:GND.1", "black", []],
+["esp:32", "resetBtn:1.l", "blue", []],
+["resetBtn:2.l", "esp:GND.1", "black", []]
+
+
+    ],
+
+
+    
+  "dependencies": {}
+}

@@ -1,0 +1,5 @@
+# PlatformIO build output and project-local packages
+/.pio/
+
+# Generated IntelliSense configuration with local SDK paths
+/.vscode/c_cpp_properties.json
