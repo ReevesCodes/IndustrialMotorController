@@ -106,7 +106,7 @@ Run the steps in order from a fresh simulation. These are expected results from 
 
 ## Wokwi simulation screenshot
 
-> Screenshot placeholder. Add a capture of the Wokwi circuit and Serial Monitor here.
+![Wokwi simulation showing the ESP32, A4988 driver, stepper motor, and operator controls](docs/wokwi-simulation.png)
 
 ## Safety disclaimer
 
